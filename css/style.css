@@ -1,0 +1,333 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+img {
+  vertical-align: top;
+  max-width: 100%;
+}
+button {
+  cursor: pointer;
+}
+body {
+  background: #fff;
+  color: #333;
+}
+
+.wrap {
+  height: 100vh;
+  position: relative;
+}
+.top {
+  height: calc(100% - 120px);
+  display: flex;
+}
+header {
+  width: 200px;
+  background: pink;
+  padding: 50px 5px;
+}
+header h1 {
+  width: 190px; /*로고 사이즈*/
+  height: 45px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+header h1 a {
+  display: block; /* 1. 인라인 성격을 블록으로 변경 (크기 가질 수 있게) */
+  width: 100%; /* 2. 부모인 h1 너비만큼 꽉 채우기 */
+  height: 100%; /* 3. 부모인 h1 높이만큼 꽉 채우기 */
+}
+nav > ul > li {
+  position: relative;
+}
+nav > ul > li > a {
+  display: block;
+  padding: 10px 20px;
+  background: green;
+  color: #fff;
+  text-align: center;
+}
+nav > ul > li:hover > a,
+nav > ul > li > a:focus,
+nav > ul > li.on > a {
+  background: yellow;
+  color: #333;
+}
+
+.sub {
+  position: absolute;
+  top: 0;
+  left: 190px;
+  width: 200px;
+  height: 200px;
+  background: rgba(0, 0, 0, 0.8);
+  color: orange;
+  z-index: 10;
+  display: none;
+}
+.sub a {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+}
+.sub a:hover, /*a에게 포커스가 갔을때*/
+.sub a:focus {
+  background: #ffc000;
+  color: #fff;
+}
+
+.contents {
+  width: 400px;
+  padding: 30px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.banner {
+  background: #ffc000;
+  border-radius: 10px;
+  padding: 20px;
+  height: 120px; /* 배너 전체 높이 120px */
+}
+
+.banner a {
+  display: flex; /* 중복되던 display: block;은 지워줍니다 */
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%; /* 💡 추가: 패딩을 제외한 남은 높이(80px)를 꽉 채우도록 설정 */
+}
+
+.banner a img {
+  display: block;
+  width: 100px;
+  height: 100%; /* 💡 변경: 120px 대신 부모(a태그) 높이의 100%(즉, 80px)를 가지도록 수정 */
+  object-fit: cover;
+}
+.banner .txt h2 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.banner .txt p {
+  font-size: 13px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.notice {
+  margin-bottom: 20px;
+}
+.notice h2 {
+  width: 120px;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px 0;
+  background: green;
+  border-radius: 10px 10px 0 0;
+}
+.notice ul {
+  border-top: 3px solid green;
+}
+.notice li a {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  padding: 5px 0;
+}
+.notice li a:hover {
+  background: yellowgreen;
+}
+.gall {
+  margin-bottom: 20px;
+}
+.gall h2 {
+  width: 120px;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px 0;
+  background: green;
+  border-radius: 10px 10px 0 0;
+}
+.gall ul {
+  display: flex;
+  gap: 20px;
+  border-top: 3px solid green;
+  justify-content: center;
+}
+.gall ul li a {
+  display: block;
+  height: 100%;
+  padding: 10px 0;
+}
+.gall ul li img {
+  width: 100%;
+  height: 100px; /* 높이 고정 */
+  object-fit: cover; /* 비율 유지하며 꽉 채움 */
+}
+.gall a:hover img {
+  opacity: 0.8;
+}
+
+.go ul {
+  border-top: 3px solid green;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  padding: 10px 0;
+}
+.go ul li a {
+  display: block;
+  padding: 10px 10px;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+}
+.go ul li .txt {
+  font-size: 12px;
+  color: #333;
+  margin-top: 5px;
+}
+
+/*모달 팝업*/
+.modal_popup {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: none;
+}
+.popup_inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 300px;
+  background: #fff;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+
+  /* 💡 수정한 정렬 코드 */
+  display: flex;
+  flex-direction: column; /* 요소를 위에서 아래로 세로 배치 */
+  justify-content: center; /* 세로(주축) 기준으로 가운데 정렬 */
+  align-items: center; /* 가로(교차축) 기준으로 가운데 정렬 */
+  position: relative; /* 닫기 버튼 위치 고정을 위해 추가 */
+}
+.popup_inner h2 {
+  margin-bottom: 20px;
+}
+.popup_inner p {
+  margin-bottom: 10px;
+  line-height: 2;
+}
+.close button:hover {
+  background: yellow;
+}
+/* 💡 닫기 버튼 박스를 우측 상단에 강제 고정 */
+.close {
+  position: absolute;
+  bottom: 20px; /* 아래에서 20px 띄우기 */
+  right: 20px; /* 오른쪽에서 20px 띄우기 */
+}
+
+.slide {
+  width: calc(100% - 200px - 400px); /* 문제지의 수식을 그대로! */
+  height: calc(100% - 120px); /* 문제지의 수식을 그대로! */
+  overflow: hidden; /*넘치는 부분 숨김*/
+  position: relative; /* absolute 자식들의 기준점 */
+}
+/* ★ 모든 유형 통일 스타일 ★ */
+.slide ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex; /* 좌우 슬라이드 전용 추가 속성 */
+  width: 300%; /* li를 가로로 품을 수 있도록 부모 ul의 너비를 300%로 늘려줍니다 */
+  height: 100%;
+}
+.slide ul li {
+  width: calc(
+    100% / 3
+  ); /* 300%의 3분의 1이므로 정확히 화면 너비만큼 가집니다. */
+  height: 100%;
+  position: relative;
+}
+.slide ul li a {
+  display: block;
+  height: 100%;
+}
+.slide ul li p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: green;
+  color: #ccc;
+  font-size: 30px;
+  padding: 20px;
+  font-weight: bold;
+}
+.s1 {
+  background: url(../images/img1.jpg) no-repeat center/cover;
+}
+.s2 {
+  background: url(../images/img2.jpg) no-repeat center/cover;
+}
+.s3 {
+  background: url(../images/img3.jpg) no-repeat center/cover;
+}
+
+footer {
+  height: 120px;
+  width: 100%;
+  background: #666;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.f_logo {
+  width: 200px; /* 상단 헤더와 똑같은 200px 방 */
+  display: flex;
+  justify-content: center; /* 방 안에서 로고 정중앙 배치 */
+}
+
+.f_logo img {
+  display: block;
+  width: 160px;
+  height: auto;
+}
+select {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+.f_menu {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.f_menu a:hover {
+  color: #ccc;
+}
