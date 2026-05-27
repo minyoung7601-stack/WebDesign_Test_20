@@ -96,13 +96,13 @@ nav > ul > li.on > a {
 .banner {
   background: #ffc000;
   border-radius: 10px;
-  padding: 20px;
+  padding: 15px;
   height: 120px; /* 배너 전체 높이 120px */
 }
 
 .banner a {
   display: flex; /* 중복되던 display: block;은 지워줍니다 */
-  gap: 5px;
+  gap: 15px;
   align-items: center;
   justify-content: space-between;
   height: 100%; /* 💡 추가: 패딩을 제외한 남은 높이(80px)를 꽉 채우도록 설정 */
@@ -110,23 +110,46 @@ nav > ul > li.on > a {
 
 .banner a img {
   display: block;
-  width: 100px;
+  width: 90px; /* 💡 이미지 크기를 살짝 조절 */
   height: 100%; /* 💡 변경: 120px 대신 부모(a태그) 높이의 100%(즉, 80px)를 가지도록 수정 */
   object-fit: cover;
 }
+/* 💡 텍스트 영역을 flex 안에서 최대한 넓게 쓰도록 유연하게 설정 */
+.banner .txt {
+  flex: 1;
+  color: #222; /* 글자색을 살짝 차분하게 변경 */
+}
 .banner .txt h2 {
-  font-size: 15px;
-  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  /* 💡 타이틀이 너무 길어지면 한 줄 넘어가서 잘리도록 처리 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .banner .txt p {
-  font-size: 13px;
+  font-size: 11px;
+  line-height: 1.4;
   margin-bottom: 10px;
-  line-height: 1.5;
   width: 160px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+/* 💡 화살표 영역 크기 고정 */
+.banner a > div:last-child {
+  /*배너 링크 안에서 가장 마지막에 있는 div 박스를 선택한다.*/
+  width: 20px; /*화살표 박스의 가로 너비를 딱 20px로 고정*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner a > div:last-child img {
+  width: 100%;
+  height: auto; /*화살표 이미지는 부모 박스 너비(20px)에 꽉 맞추고, 높이는 비율에 맞게 알아서 조절*/
+}
+
 .notice {
   margin-bottom: 20px;
 }
